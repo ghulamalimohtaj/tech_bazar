@@ -1,0 +1,107 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Nov 7, 2020, 7:45:23 PM
+    Author     : Ghulam Ali
+*/
+*{
+    box-sizing: border-box;
+}
+#login-form{
+    
+    border-radius: 5px;
+    border:1px gray solid;
+    
+    background-color: #f1f1f1;
+}
+lable{color:white}
+#fire-sing-in, #fire-sign-up{cursor: pointer}
+#search-pannel{width: 200px;float:right;position: absolute;top: 0px;right: 5%;}
+
+#search-trigger{border: 1px solid pink;border-radius: 50px;padding: 2px 20px 0px 20px;background-color: pink;cursor: pointer}
+#search-trigger:hover{background:none}
+#showableSearch{display:none;}
+#fireShow{cursor: pointer}
+#fireShow:hover{background-color: darkslategray}
+
+body{background-color: pink;border-radius: 5px}
+
+
+#showNewPc{cursor: pointer;background-color: rgba(3,4,30,0.6);border-radius: 5px;margin-left: 30px;color:white;padding: 10px}
+#showNewPc:hover{background-color: rgba(3,4,30,0.9)}
+.makeDecision:hover{background-color: rgba(3,4,30,0.3)}
+.pendingMarkets{padding: 5px;margin-top: 10px}
+
+#overPc{padding: 20px;color:black;}
+#pc{padding-top: 40px;}
+
+.fl{
+    float:left;
+}
+.fr{
+    float:right;
+}
+
+.shop-name{
+    width:100%;
+    margin:0px auto;
+    font-size: 10rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;   
+}
+.shop-name h1{
+    font-size: 100px;
+}
+#title{
+    font-size:60px;
+}
+.search input{
+    padding:5px;
+    border-radius: 3px;
+    float:right;
+    width:50%;
+}
+.search input:focus{
+    width:100%;
+    transition: 0.5s;
+}
+.full{
+    width:100%;
+}
+.error{
+    color:red;
+}
+.pc_images{
+    cursor: pointer;
+}
+#bg_change{
+    text-align:left;
+    display: none;
+    position:absolute;
+    left:120px;
+    background-color: rgba(3, 4, 30);
+    z-index: 3;
+    padding:20px;
+}
+#pro{
+    margin-right:100px;width:100px;border-radius:50%;
+}
+.pc_images:hover{
+    transform: scale(1.05);
+    transition: 0.3s;
+}
+@media only screen and (max-width: 800px) {
+    .shop-name h1{
+        font-size:25px;
+    }
+    #head{
+        height: 400px;
+    }
+}
+@media only screen and (max-width: 548px) {
+    #pro{
+        margin-right:0px;
+    }
+}
