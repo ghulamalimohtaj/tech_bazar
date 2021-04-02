@@ -111,7 +111,6 @@
                             <input type="submit" name="sned" value="Register" class="btn btn-primary" id="submit">
                         </div>
                     </form>
-                    <button onclick="validate()"> fire</button>
                 </div>
         </div>
       </div>
@@ -209,7 +208,7 @@
                                 <p><?php echo("RAM: ".$pc['ram']); ?><br>
                                 <?php echo("Storage: ".$pc['storage']); ?><br>
                                 <?php echo("Price: ".$pc['price']);?><br>
-                                <?php echo("Buttery Live: ".$pc['charge']." hours");?></p>
+                                <?php echo("Battery Live: ".$pc['charge']." hr");?></p>
                               <br>
                               <br>
 
