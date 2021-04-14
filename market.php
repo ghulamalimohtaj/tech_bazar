@@ -117,8 +117,8 @@ if ($_SERVER['REQUEST_METHOD'] === "GET" || $_SERVER['REQUEST_METHOD'] === "POST
                            
                             <div class="fl_right">
                                 <ul class="nospace">
-                                    <li><i class="fas fa-phone rgtspace-5"></i> <?php echo("0".$getMarket['mkt_owner_phone']);?></li>
-                                    <li><i class="fas fa-envelope rgtspace-5"></i> <?php echo($getMarket['mkt_owner_email']);?></li>
+                                    <li>Phone <?php echo("0". $getMarket['mkt_owner_phone']);?></li>
+                                    <li>Address <?php echo($getMarket['mkt_owner_email']);?></li>
                                     <li><span id="fire-sign-in"><a href="javascript:void(0)"  data-toggle="modal" data-target="#newpc" >Add new PC</a></span></li>
                                     <li><span><a href="login.php?logout=ok">Log out</a></span></li>
                                 </ul>
@@ -237,13 +237,10 @@ if ($_SERVER['REQUEST_METHOD'] === "GET" || $_SERVER['REQUEST_METHOD'] === "POST
                                             </select>
                                         </div>
                                         <div class="form-group" id="ram_g">
-                                            <label for="ram">RAM</label>
+                                            <label for="ram">RAM(GB)</label>
                                             <p id="ram_err" class="error"></p>
-                                            <input type="number" min="0" max="1024" name="ram" id="ram" class="form-control" required>
-                                            <select name="ram_unit" id="ram_unit" class="w3-rest">
-                                                <option value="MB">MB</option>
-                                                <option value="GB" selected>GB</option>
-                                            </select>
+                                            <input type="number" min="1" max="1024" name="ram" id="ram" class="form-control" required>
+                                           
                                         </div>
                                         <div class="form-group" id="storage_g">
                                             <label for="Storage">Storage</label>
@@ -254,6 +251,12 @@ if ($_SERVER['REQUEST_METHOD'] === "GET" || $_SERVER['REQUEST_METHOD'] === "POST
                                                 <option value="TB">TB</option>
                                             </select>
                                         </div>
+
+                                        <div class="form-group">
+                                            <label for="size">Screen size (Inches)</label>
+                                            <input type="number" min="10" max="18" name="size" required class="form-control">
+                                        </div>
+
                                         <div class="form-group" id="charge_g">
                                             <p id="charge_err" class="error"></p>
                                             <label for="charge">Charge maintenance (hours)</label>
@@ -326,8 +329,9 @@ if ($_SERVER['REQUEST_METHOD'] === "GET" || $_SERVER['REQUEST_METHOD'] === "POST
                                             <h1 style="clear:both;text-transform:<?php if($pc['model'] == "hp") echo 'lowercase;';?>;"><?php echo($pc['model']); ?></h1>
                                             <p><?php echo("RAM: ".$pc['ram']); ?><br>
                                             <?php echo("Storage: ".$pc['storage']); ?><br>
+                                            <?php echo("size: ".$pc['size']); ?> Inches<br>
                                             <?php echo("Price: ".$pc['price']);?><br>
-                                            <?php echo("Buttery Live: ".$pc['charge']." hr");?></p>
+                                            <?php echo("Battery Live: ".$pc['charge']." hr");?></p>
                                             
                                             <form method="post" action="pc_delete.php" class="form-row" style="display:inline">
                                                 <input type="hidden" name="pcId" value="<?php echo($pc['pc_id']);?>">
@@ -365,47 +369,24 @@ if ($_SERVER['REQUEST_METHOD'] === "GET" || $_SERVER['REQUEST_METHOD'] === "POST
                     var photo_flag = true;
 
                     var ram = document.getElementById('ram');
-                    var ram_unit = document.getElementById('ram_unit');
                     var storage = document.getElementById('storage');
                     var storage_unit = document.getElementById('storage_unit');
                     var price = document.getElementById('price');
                     var price_unit = document.getElementById('price_unit');
                     var charge = document.getElementById('charge');
                     
-                    var ram_err = document.getElementById('ram_err');
                     var storage_err = document.getElementById('storage_err');
                     var price_err = document.getElementById('price_err');
                     var charge_err = document.getElementById('charge_err');
                     var img_err = document.getElementById('img_err');
 
                     var storage_g = document.getElementById('storage_g');
-                    var ram_g = document.getElementById('ram_g');
                     var charge_g = document.getElementById('charge_g');
                     var price_g = document.getElementById('price_g');
                     var img_g = document.getElementById('img_g');
 
 
-                    if(ram_unit.value == "MB"){
-                        if(ram.value<500){
-                            ram_flag = false;
-                            ram_err.innerHTML = "RAM capacity can't be less than 500 MB";
-                            ram_g.style.border="1px solid red";
-                        }else{
-                            ram_flag = true;
-                            ram_err.innerHTML = "";
-                            ram_g.style.border="none";
-                        }
-                    }else{
-                        if(ram.value<1){
-                            ram_flag = false;
-                            ram_err.innerHTML = "RAM capacity can't be less than 500 MB";
-                            ram_g.style.border="1px solid red";
-                        }else{
-                            ram_flag = true;
-                            ram_err.innerHTML = "";
-                            ram_g.style.border="none";
-                        }
-                    }
+                    
                     if(storage_unit.value =="GB"){
                         if(storage.value<50){
                             storage_flag = false;
@@ -418,7 +399,7 @@ if ($_SERVER['REQUEST_METHOD'] === "GET" || $_SERVER['REQUEST_METHOD'] === "POST
                         }
                     }
                     else{
-                        if(storage.value>3){
+                        if(storage.value>4){
                             storage_flag = false;
                             storage_err.innerHTML = "Invalid storage capacity";
                             storage_g.style.border="1px solid red";   
