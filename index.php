@@ -101,7 +101,7 @@
                         <div class="form-group">
                           <label for="">Password</label>
                           <input type="password" name="owner_password" class="form-control" id="pass" placeholder="Enter your password" required>
-                          <p>The password must be at least 7 characters long!</p>
+                          <p style="text-trnsform:lowercase;">The password must be at least 7 characters long!</p>
                         </div>
                         <div class="form-group">
                           <label for="">Confirm</label>
@@ -204,9 +204,10 @@
                                 </div>
                                 <br>
                             <div class="cursor-pointer" style="display:block;text-align:left">
-                                <h1><?php echo($pc['model']); ?></h1>
+                                <h1 style="clear:both;text-transform:<?php if($pc['model'] == "hp") echo 'lowercase;';?>;"><?php echo($pc['model']); ?></h1>
                                 <p><?php echo("RAM: ".$pc['ram']); ?><br>
                                 <?php echo("Storage: ".$pc['storage']); ?><br>
+                                <?php echo("Size: ".$pc['size']); ?>Inches<br>
                                 <?php echo("Price: ".$pc['price']);?><br>
                                 <?php echo("Battery Live: ".$pc['charge']." hr");?></p>
                               <br>
@@ -280,7 +281,7 @@ require("footer.php");
     var owner_lname = document.getElementById('owner_lname').value;
     var prof = document.getElementById('prof').value;
     var license = document.getElementById('license').value;
-    let myRegex = /[0-9!@#$%^&*+=/.>?{}<]/ig;
+    let myRegex = /[^A-z]/ig;
     let addressRegex = /[!@#$%^&*+=/.>?{}<]/ig;
 
     var mkt_name_g = document.getElementById('mkt_name_g');
