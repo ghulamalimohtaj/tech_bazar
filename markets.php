@@ -2,12 +2,13 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === "GET") {
     $market_id = $_GET['id'];
-    
+    // fetch all comuters of the selected shop
     $varify = "SELECT * FROM market WHERE mkt_id=" . $market_id;
     require ("connection.php");
     $exe = $conn->query($varify);
     $photo ="";
     if ($exe && $exe->num_rows === 1) {
+        // fetch shop details
         $getMarket = $exe->fetch_assoc();
         $shopName = $getMarket['mkt_name'];
         $ownerName = $getMarket['mkt_owner_name'];
@@ -28,6 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
             <html lang="">
                 <head>
                     <title>TechBazar</title>
+                    <!-- add css and js files -->
                     <meta charset="utf-8">
                     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
                     <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
@@ -57,6 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
                     </div>
                     <style>
                     #head{
+                        /* set background image */
                         background-image: url(<?php echo($bg);?>);
                         background-size:100%;
                         background-repeat:no-repeat;
@@ -101,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
                 <div class="row">
 
             <?php
-            if(isset($_GET['q'])){
+            if(isset($_GET['q'])){// if it is searched then fetch the searched computer
                 $q = $_GET['q'];
                 $getComputers = "SELECT * FROM computer WHERE shop_id=" . $market_id ." AND (model LIKE '%".$q."%' OR ram LIKE '%".$q."%' OR storage LIKE '%".$q."%' OR price LIKE '%".$q."%' OR charge LIKE '%".$q."%')";
             }else{
@@ -118,6 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
                                 $sql = $conn->query("SELECT name FROM images WHERE pc_id=".$pc['pc_id']);
                                     while($images = $sql->fetch_assoc()){
                                         if($i ==0){
+                                            // the first computer image will appear larger then the rest
                                             echo "<img src='market/pc/".$images['name']."' class='w3-full pc_images' onclick='showMe(this.src)'  data-toggle='modal' data-target='#show_img'>";
                                         }else{
                                             echo "<img src='market/pc/".$images['name']."' class='w3-third p-1 pc_images' onclick='showMe(this.src)'  data-toggle='modal' data-target='#show_img'>";
@@ -214,6 +218,7 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
                     </main>
                 </div>
                 <?php
+                // append footer to market page
                 require("footer.php");
                 ?>
                 
