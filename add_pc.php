@@ -15,13 +15,14 @@ if(isset($_POST['id'])){
         if(isset($_SESSION["a".$shop_id])){
             $id = $_POST['id'];
             $model = $_POST['model'];
-            $ram = $_POST['ram'].$_POST['ram_unit'];
+            $ram = $_POST['ram']."GB";
             $storage = $_POST['storage'].$_POST['storage_unit'];
             $charge = $_POST['charge']."";
             $price = $_POST['price'].$_POST['price_unit'];
+            $size = $_POST['size'].;
             $i = 0;
             require('connection.php');
-            $add_pc = "INSERT INTO computer VALUES(null,".$shop_id.",'".$model."','".$ram."','".$storage."','".$charge."','".$price."',NOW())";
+            $add_pc = "INSERT INTO computer VALUES(null,".$shop_id.",'".$model."','".$ram."','".$storage."',".$size.",'".$charge."','".$price."',NOW())";
             
                 if ( $conn->query( $add_pc ) ){
                   $last_id = $conn->insert_id;
