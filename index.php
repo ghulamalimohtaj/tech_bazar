@@ -5,6 +5,7 @@
 <title>TechBazar</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<!-- import external files -->
 <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
 <link rel="stylesheet" href="layout/styles/w3.css">
 <link rel="stylesheet" href="layout/styles/font-awesome.min.css">
@@ -21,7 +22,7 @@
 <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">-->
 </head>
 <body>
-    
+    <!-- start content -->
 <div class="wrapper row0" style="overflow: hidden;height: 60px">
   <div id="topbar" class="hoc clear"> 
     <div class="fl_left">
@@ -125,6 +126,7 @@
 </div>
     
      <?php
+    // show message after signing up to say if it was successful or not
         if(isset($_GET['reg'])){
             if($_GET['reg'] == 'ok'){
             echo ("<script>alert('successfull submission! you will be approved within 24 hours!');</script>");  
@@ -161,16 +163,19 @@
       
     <div class="row">
             <?php
+            // if the website is searched the query the searching word
             if(isset($_GET['q'])){
                 $q = $_GET['q'];
                 $getComputers = "SELECT * FROM computer WHERE model LIKE '%".$q."%' OR ram LIKE '%".$q."%' OR storage LIKE '%".$q."%' OR charge LIKE '%".$q."%' OR price LIKE '%".$q."%'";
               }else{
+                // defualt mode
             $getComputers = "SELECT * FROM computer ORDER BY add_date DESC LIMIT 6";
             }
             require 'connection.php';
             $exe = $conn->query($getComputers);
             if ($exe && $exe->num_rows > 0) {
                 while ($pc = $exe->fetch_assoc()) {
+                    // fetching all computers from the database
                         $shop_id = $pc['shop_id'];
                         $getMarket = "SELECT * FROM market WHERE mkt_id=".$pc['shop_id'];
                         $exeGetMember = $conn->query($getMarket);
@@ -192,6 +197,7 @@
 
                                     while($images = $sql->fetch_assoc()){
                                         if($i ==0){
+                                            // the fist computer picture will appear larger than others
                                             echo "<img src='market/pc/".$images['name']."' class='w3-full pc_images' onclick='showMe(this.src)'  data-toggle='modal' data-target='#show_img'>";
                                         }else{
                                             echo "<img src='market/pc/".$images['name']."' class='w3-third p-1 pc_images' onclick='showMe(this.src)'  data-toggle='modal' data-target='#show_img'>";
@@ -204,6 +210,7 @@
                                 </div>
                                 <br>
                             <div class="cursor-pointer" style="display:block;text-align:left">
+                                <!-- printing computers -->
                                 <h1 style="clear:both;text-transform:<?php if($pc['model'] == "hp") echo 'lowercase;';?>;"><?php echo($pc['model']); ?></h1>
                                 <p><?php echo("RAM: ".$pc['ram']); ?><br>
                                 <?php echo("Storage: ".$pc['storage']); ?><br>
@@ -240,6 +247,7 @@
 
 
 <?php
+ // attach footer 
 require("footer.php");
 ?>
 <a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
@@ -274,6 +282,7 @@ require("footer.php");
       xmlhttp.send();
     }
   }
+    // sign up form validation
   function validate(){
     var mkt_name = document.getElementById('mkt_name').value;
     var mkt_add = document.getElementById('mkt_add').value;
@@ -374,7 +383,7 @@ require("footer.php");
             document.getElementById('license').style.border = "1px solid red";
         }
     
-
+    // if everyting was valid then return true for submission otherwise false
     return mkt_name_flag && mkt_add_flag && owner_name_flag && owner_lname_flag && pro_img_flag && license_img_flag;
     
   }
