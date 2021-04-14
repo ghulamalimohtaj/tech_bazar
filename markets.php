@@ -132,6 +132,7 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
                                             <h1><?php echo($pc['model']); ?></h1>
                                             <p><?php echo("RAM: ".$pc['ram']); ?><br>
                                             <?php echo("Storage: ".$pc['storage']); ?><br>
+                                            <?php echo("Size : ".$pc['size']); ?>Inches<br>
                                             <?php echo("Price: ".$pc['price']);?><br>
                                             <?php echo("Buttery Live: ".$pc['charge']." hours");?></p>                                                
                                         </div>
