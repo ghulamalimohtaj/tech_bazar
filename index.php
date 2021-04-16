@@ -81,7 +81,7 @@
                           <input type="text" name="owner_lname" class="form-control"id="owner_lname" placeholder="Enter your lastname">
                         </div>
                         <div class="form-group">
-                          <label for="">Phone(without +93 or 0)</label>
+                          <label style="text-transform:lowercase;" for="">Phone(without +93 or 0)</label>
                           <input type="number" min="000000000" max="999999999" name="owner_phone" class="form-control" placeholder="Enter your phone number" required>
                         </div>
                         <div class="form-group">
@@ -102,7 +102,7 @@
                         <div class="form-group">
                           <label for="">Password</label>
                           <input type="password" name="owner_password" class="form-control" id="pass" placeholder="Enter your password" required>
-                          <p style="text-trnsform:lowercase;">The password must be at least 7 characters long!</p>
+                          <p style="text-transform:lowercase;">password must be at least 7 characters long!</p>
                         </div>
                         <div class="form-group">
                           <label for="">Confirm</label>
