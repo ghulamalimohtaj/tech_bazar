@@ -290,7 +290,7 @@ require("footer.php");
     var owner_lname = document.getElementById('owner_lname').value;
     var prof = document.getElementById('prof').value;
     var license = document.getElementById('license').value;
-    let myRegex = /[^A-z]/ig;
+    let myRegex = /[0-9!@#$%^&*+=/"'-_.>?{}<]/ig;
     let addressRegex = /[!@#$%^&*+=/.>?{}<]/ig;
 
     var mkt_name_g = document.getElementById('mkt_name_g');
