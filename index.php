@@ -52,7 +52,6 @@
       <div class="modal-content" >
         <!-- Modal body -->
         <div class="modal-body" style="color:black">
-        <div >
             <form method="post" action="signup.php" onsubmit="return validate()" enctype="multipart/form-data">
                 <div class="form-group" id="mkt_name_g">
                   <p id="mkt_name_err" class="error"></p>
@@ -111,10 +110,6 @@
       </div>
     </div>
   </div>  
-</div>
-</div>
-</div>
-</div>
     
      <?php
     // show message if registeration was successful or not
@@ -156,16 +151,17 @@
       
     <div class="row">
             <?php
-            if(isset($_GET['q'])){
+            
+            if(isset($_GET['q'])){// Search state
                 $q = $_GET['q'];
                 $getComputers = "SELECT * FROM computer WHERE model LIKE '%".$q."%' OR ram LIKE '%".$q."%' OR storage LIKE '%".$q."%' OR charge LIKE '%".$q."%' OR price LIKE '%".$q."%'";
-              }else{
+              }else{//normal state
             $getComputers = "SELECT * FROM computer ORDER BY add_date DESC LIMIT 6";
             }
             require 'connection.php';
             $exe = $conn->query($getComputers);
             if ($exe && $exe->num_rows > 0) {
-                while ($pc = $exe->fetch_assoc()) {
+                while ($pc = $exe->fetch_assoc()) { // fetch computers
                         $shop_id = $pc['shop_id'];
                         $getMarket = "SELECT * FROM market WHERE mkt_id=".$pc['shop_id'];
                         $exeGetMember = $conn->query($getMarket);
@@ -185,7 +181,7 @@
                                 $i =0;
                                 $sql = $conn->query("SELECT name FROM images WHERE pc_id=".$pc['pc_id']);
 
-                                    while($images = $sql->fetch_assoc()){
+                                    while($images = $sql->fetch_assoc()){// fetch pictures
                                         if($i ==0){
                                             echo "<img src='market/pc/".$images['name']."' class='w3-full pc_images' onclick='showMe(this.src)'  data-toggle='modal' data-target='#show_img'>";
                                         }else{
@@ -218,11 +214,13 @@
 
     </div>
     <div class="modal fade" id="show_img">
-                        <div class="modal-dialog" style="width:80%">
-                            <span type="button" data-dismiss="modal" class="w3-button w3-black" style="cursor:pointer;position:absolute;top:0px">&cross;</span>
-                            <img src="" alt="" id="modal_img" style="width:100%">
-                        </div>
-                    </div>
+        <div class="modal-dialog" style="width:80%">
+            <span type="button" data-dismiss="modal" class="w3-button w3-black" style="cursor:pointer;position:absolute;top:0px">&cross;</span>
+            <img src="" alt="" id="modal_img" style="width:100%">
+        </div>
+    </div>
+      
+      <!-- About section -->
     <div class="wrapper container about" id="about">
   <div class="w3-center p-3">
       <h1>About us</h1>
@@ -232,8 +230,6 @@
   </main>
 </div>
 
-
-
 <?php
 require("footer.php");
 ?>
@@ -241,8 +237,9 @@ require("footer.php");
 <script type="text/javascript">
     var submit = document.getElementById('submit');
     submit.disabled=true;
+    
+    // this function enables submit button if password and confirm password matches and both are more than 7 characters
     function decide(){
-
     var pass = document.getElementById('pass');
     var repass = document.getElementById('repass');
    if(pass.value==repass.value && pass.value.length>6){
@@ -257,18 +254,8 @@ require("footer.php");
 <script src="layout/scripts/jquery.backtotop.js"></script>
 <script src="layout/scripts/jquery.mobilemenu.js"></script>
 <script type="text/javascript">
-  function search(x) {
-    if(x!=""){
-      var xmlhttp = new XMLHttpRequest();
-      xmlhttp.onreadystatechange = function(){
-        if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-          document.getElementById('menu').innerHTML = this.responseText;
-        }
-      };
-      xmlhttp.open('GET','ajax.php?q='+x,ture);
-      xmlhttp.send();
-    }
-  }
+
+    // shop-registerating from validation
   function validate(){
     var mkt_name = document.getElementById('mkt_name').value;
     var mkt_add = document.getElementById('mkt_add').value;
@@ -276,8 +263,9 @@ require("footer.php");
     var owner_lname = document.getElementById('owner_lname').value;
     var prof = document.getElementById('prof').value;
     var license = document.getElementById('license').value;
-    let myRegex = /[^A-z ]/ig;
-    let addressRegex = /[!@#$%^&*+=/.>?{}<]/ig;
+      
+    let myRegex = /[^A-z ]/ig;// only alphabets( for name, last name and shop name
+    let addressRegex = /[!@#$%^&*+=/.>?{}<]/ig;// for address
 
     var mkt_name_g = document.getElementById('mkt_name_g');
     var mkt_add_g = document.getElementById('mkt_add_g');
@@ -346,38 +334,35 @@ require("footer.php");
     var pro_img_flag = true;
     var license_img_flag = true;
   
-        var slicePoint = prof.lastIndexOf('.')+1;
-        var proExt = prof.slice(slicePoint,prof.length);
-        if(proExt == "jpg" || proExt == "png" || proExt == "JFIF" || proExt == "jpeg" || proExt == "gif")  {
-          pro_img_flag = true;
-          pro_err.innerHTML="";
-          document.getElementById('prof').style.border = "none";
-        }else{
-          pro_img_flag = false;
-          document.getElementById('prof').style.border = "1px solid red";
-          pro_err.innerHTML = "Invalid File type";
-        
-        }
+    var slicePoint = prof.lastIndexOf('.')+1;
+    var proExt = prof.slice(slicePoint,prof.length);
+    if(proExt == "jpg" || proExt == "png" || proExt == "JFIF" || proExt == "jpeg" || proExt == "gif")  {
+      pro_img_flag = true;
+      pro_err.innerHTML="";
+      document.getElementById('prof').style.border = "none";
+    }else{
+      pro_img_flag = false;
+      document.getElementById('prof').style.border = "1px solid red";
+      pro_err.innerHTML = "Invalid File type";
 
-        var slicePoint = license.lastIndexOf('.')+1;
-        var licenseExt = license.slice(slicePoint,license.length);
-        if(licenseExt == "jpg" || licenseExt == "png" || licenseExt == "jpeg" || licenseExt == "gif")  {
-            license_img_flag = true;
-            license_err.innerHTML = "Invalid File type";
-            document.getElementById('license').style.border = "none";
-        }else{
-            license_img_flag = false;
-            license_err.innerHTML = "Invalid File type";
-            document.getElementById('license').style.border = "1px solid red";
-        }
+    }
+
+    var slicePoint = license.lastIndexOf('.')+1;
+    var licenseExt = license.slice(slicePoint,license.length);
+    if(licenseExt == "jpg" || licenseExt == "png" || licenseExt == "jpeg" || licenseExt == "gif")  {
+        license_img_flag = true;
+        license_err.innerHTML = "Invalid File type";
+        document.getElementById('license').style.border = "none";
+    }else{
+        license_img_flag = false;
+        license_err.innerHTML = "Invalid File type";
+        document.getElementById('license').style.border = "1px solid red";
+    }
     
-
+    // Return true if there is not invalid value otherwise false so that 'true' value allow form to be submitted but 'false' not
     return mkt_name_flag && mkt_add_flag && owner_name_flag && owner_lname_flag && pro_img_flag && license_img_flag;
     
   }
 </script>
 </body>
 </html>
-<script src="layout/scripts/myscript.js">
- 
- </script>
