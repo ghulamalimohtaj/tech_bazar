@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_SESSION['varify'])){
+if(isset($_SESSION['varify'])){// check if session is set 
 ?>
 <!DOCTYPE html>
 
@@ -9,6 +9,7 @@ if(isset($_SESSION['varify'])){
 <title>TechBazar</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <!-- Add external files -->
 <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
 <link rel="stylesheet" href="layout/styles/w3.css">
 <link rel="stylesheet" href="layout/styles/font-awesome.min.css">
@@ -134,7 +135,7 @@ if(isset($_SESSION['varify'])){
                 </tr>
                 <tr>
                     <td>Phone</td>
-                    <td><?php echo($markets['mkt_owner_phone']);?></td>
+                    <td>0<?php echo($markets['mkt_owner_phone']);?></td>
                 </tr>
                 <tr>
                     <td>Email</td>
