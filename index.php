@@ -5,7 +5,6 @@
 <title>TechBazar</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<!-- Attach external files-->
 <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
 <link rel="stylesheet" href="layout/styles/w3.css">
 <link rel="stylesheet" href="layout/styles/font-awesome.min.css">
@@ -18,10 +17,11 @@
 <script src="js/myscript.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/popper.min.js"></script>
+<!--<link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+<link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">-->
 </head>
-    <!-- content start-->
 <body>
-    <!-- header start -->
+    
 <div class="wrapper row0" style="overflow: hidden;height: 60px">
   <div id="topbar" class="hoc clear"> 
     <div class="fl_left">
@@ -36,88 +36,96 @@
         <li><span id="fire-sign-in"><a href="login.php" >Sign in</a></span></li>
         <li><span id="fire-sign-in"><a href="login.php"  data-toggle="modal" data-target="#signup" >Sign up</a></span></li>
       </ul>
-    
-<div class="container mt-3">
+        
+        <div class="container">
+
+  <!-- The Modal -->
+   
+</div>
+
+        <div class="container mt-3">
 <style>
 .form-group{
-    /* giving style to form inputs*/
   padding:0px 10px 0px 10px;
   border-radius:5px;
 }
 </style>
-    
-    <!-- sign up form modal start-->
   <div class="modal fade" id="signup">
     <div class="modal-dialog">
       <div class="modal-content" >
+      
+        
         <!-- Modal body -->
         <div class="modal-body" style="color:black">
-            <div>
+        <div >
             <form method="post" action="signup.php" onsubmit="return validate()" enctype="multipart/form-data">
-                <div class="form-group" id="mkt_name_g">
-                  <p id="mkt_name_err" class="error"></p>
-                  <label for="">Shop Name</label>
-                  <input type="text" name="mkt_name" class="form-control" id="mkt_name" placeholder="Enter your shop name" required>
+                        <div class="form-group" id="mkt_name_g">
+                          <p id="mkt_name_err" class="error"></p>
+                          <label for="">Shop Name</label>
+                          <input type="text" name="mkt_name" class="form-control" id="mkt_name" placeholder="Enter your shop name" required>
+                        </div>
+                        <div class="form-group" id="mkt_add_g">
+                          <p id="mkt_add_err" class="error"></p>
+                          <label for="">Address</label>
+                          <input type="text" name="mkt_add" class="form-control" id="mkt_add" placeholder="Enter your addrss" required>
+                        </div>
+                        <div class="form-group" id="owner_name_g">
+                          <p id="owner_name_err" class="error"></p>
+                          <label for="">Name</label>
+                          <input type="text" name="owner_name" class="form-control" id="owner_name" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group" id="owner_lname_g">
+                          <p id="owner_lname_err" class="error"></p>
+                          <label for="">Lastname</label>
+                          <input type="text" name="owner_lname" class="form-control"id="owner_lname" placeholder="Enter your lastname">
+                        </div>
+                        <div class="form-group">
+                          <label for="">Phone(without +93 or 0)</label>
+                          <input type="number" min="000000000" max="999999999" name="owner_phone" class="form-control" placeholder="Enter your phone number" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="">email</label>
+                          <input type="email" name="owner_email" class="form-control" placeholder="Enter your email address" required>
+                        </div>
+                        
+                        <div class="form-group">
+                          <p id="pro_err" class="error"></p>
+                          <label for="">Photo</label>
+                          <input type="file" name="photo" id="prof" class="form-control">
+                        </div>
+                        <div class="form-group">
+                          <p id="license_err" class="error"></p>
+                          <label for="">License</label>
+                          <input type="file" name="license" id="license" class="form-control" required="">
+                        </div>
+                        <div class="form-group">
+                          <label for="">Password</label>
+                          <input type="password" name="owner_password" class="form-control" id="pass" placeholder="Enter your password" required>
+                          <p style="text-trnsform:lowercase;">The password must be at least 7 characters long!</p>
+                        </div>
+                        <div class="form-group">
+                          <label for="">Confirm</label>
+                          <input type="password" name="confirm" onkeyup="decide()" class="form-control" id="repass" placeholder="Retype your password" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="sned" value="Register" class="btn btn-primary" id="submit">
+                        </div>
+                        <p onclick="validate()">fire</p>
+                    </form>
                 </div>
-                <div class="form-group" id="mkt_add_g">
-                  <p id="mkt_add_err" class="error"></p>
-                  <label for="">Address</label>
-                  <input type="text" name="mkt_add" class="form-control" id="mkt_add" placeholder="Enter your addrss" required>
-                </div>
-                <div class="form-group" id="owner_name_g">
-                  <p id="owner_name_err" class="error"></p>
-                  <label for="">Name</label>
-                  <input type="text" name="owner_name" class="form-control" id="owner_name" placeholder="Enter your name" required>
-                </div>
-                <div class="form-group" id="owner_lname_g">
-                  <p id="owner_lname_err" class="error"></p>
-                  <label for="">Lastname</label>
-                  <input type="text" name="owner_lname" class="form-control"id="owner_lname" placeholder="Enter your lastname">
-                </div>
-                <div class="form-group">
-                  <label for="">Phone(<span style="text-transform:lowercase;">without +93 or 0</span>)</label>
-                  <input type="number" min="000000000" max="999999999" name="owner_phone" class="form-control" placeholder="Enter your phone number" required>
-                </div>
-                <div class="form-group">
-                  <label for="">email</label>
-                  <input type="email" name="owner_email" class="form-control" placeholder="Enter your email address" required>
-                </div>
-
-                <div class="form-group">
-                  <p id="pro_err" class="error"></p>
-                  <label for="">Photo</label>
-                  <input type="file" name="photo" id="prof" class="form-control">
-                </div>
-                <div class="form-group">
-                  <p id="license_err" class="error"></p>
-                  <label for="">License</label>
-                  <input type="file" name="license" id="license" class="form-control" required="">
-                </div>
-                <div class="form-group">
-                  <label for="">Password</label>
-                  <input type="password" name="owner_password" class="form-control" id="pass" placeholder="Enter your password" required>
-                  <p style="text-transform:lowercase;">password must be at least 7 characters long!</p>
-                </div>
-                <div class="form-group">
-                  <label for="">Confirm</label>
-                  <input type="password" name="confirm" onkeyup="decide()" class="form-control" id="repass" placeholder="Retype your password" required>
-                </div>
-                <div class="form-group">
-                    <input type="submit" name="sned" value="Register" class="btn btn-primary" id="submit">
-                </div>
-            </form>
-            </div>
         </div>
       </div>
     </div>
   </div>
+  
+</div>
+      
+    </div>
+
   </div>
-</div>
-</div>
 </div>
     
      <?php
-    // show message if registeration was successful or not
         if(isset($_GET['reg'])){
             if($_GET['reg'] == 'ok'){
             echo ("<script>alert('successfull submission! you will be approved within 24 hours!');</script>");  
@@ -139,11 +147,9 @@
         
   </header>
 </div>
-    <!-- background picture (show normally not when it is searched -->
 <div class="wrapper bgded overlay" style="<?php if(isset($_GET['q']))echo("display:none;");else{echo("display:block;");}?>background-image:url('images/demo/backgrounds/computer.jpg');">
   <div id="pageintro" class="hoc clear"> 
     <article>
-        <!-- OUR MAIN WORD -->
       <h1>Find a computer of your dream without wasting much time visiting every shops!</h1>
     </article>
   </div>
@@ -156,17 +162,16 @@
       
     <div class="row">
             <?php
-            
-            if(isset($_GET['q'])){// Search state
+            if(isset($_GET['q'])){
                 $q = $_GET['q'];
                 $getComputers = "SELECT * FROM computer WHERE model LIKE '%".$q."%' OR ram LIKE '%".$q."%' OR storage LIKE '%".$q."%' OR charge LIKE '%".$q."%' OR price LIKE '%".$q."%'";
-              }else{//normal state
+              }else{
             $getComputers = "SELECT * FROM computer ORDER BY add_date DESC LIMIT 6";
             }
             require 'connection.php';
             $exe = $conn->query($getComputers);
             if ($exe && $exe->num_rows > 0) {
-                while ($pc = $exe->fetch_assoc()) { // fetch computers
+                while ($pc = $exe->fetch_assoc()) {
                         $shop_id = $pc['shop_id'];
                         $getMarket = "SELECT * FROM market WHERE mkt_id=".$pc['shop_id'];
                         $exeGetMember = $conn->query($getMarket);
@@ -186,7 +191,7 @@
                                 $i =0;
                                 $sql = $conn->query("SELECT name FROM images WHERE pc_id=".$pc['pc_id']);
 
-                                    while($images = $sql->fetch_assoc()){// fetch pictures
+                                    while($images = $sql->fetch_assoc()){
                                         if($i ==0){
                                             echo "<img src='market/pc/".$images['name']."' class='w3-full pc_images' onclick='showMe(this.src)'  data-toggle='modal' data-target='#show_img'>";
                                         }else{
@@ -219,13 +224,11 @@
 
     </div>
     <div class="modal fade" id="show_img">
-        <div class="modal-dialog" style="width:80%">
-            <span type="button" data-dismiss="modal" class="w3-button w3-black" style="cursor:pointer;position:absolute;top:0px">&cross;</span>
-            <img src="" alt="" id="modal_img" style="width:100%">
-        </div>
-    </div>
-      
-      <!-- About section -->
+                        <div class="modal-dialog" style="width:80%">
+                            <span type="button" data-dismiss="modal" class="w3-button w3-black" style="cursor:pointer;position:absolute;top:0px">&cross;</span>
+                            <img src="" alt="" id="modal_img" style="width:100%">
+                        </div>
+                    </div>
     <div class="wrapper container about" id="about">
   <div class="w3-center p-3">
       <h1>About us</h1>
@@ -235,6 +238,8 @@
   </main>
 </div>
 
+
+
 <?php
 require("footer.php");
 ?>
@@ -242,9 +247,8 @@ require("footer.php");
 <script type="text/javascript">
     var submit = document.getElementById('submit');
     submit.disabled=true;
-    
-    // this function enables submit button if password and confirm password matches and both are more than 7 characters
     function decide(){
+
     var pass = document.getElementById('pass');
     var repass = document.getElementById('repass');
    if(pass.value==repass.value && pass.value.length>6){
@@ -259,8 +263,7 @@ require("footer.php");
 <script src="layout/scripts/jquery.backtotop.js"></script>
 <script src="layout/scripts/jquery.mobilemenu.js"></script>
 <script type="text/javascript">
-
-    // shop-registerating from validation
+ 
   function validate(){
     var mkt_name = document.getElementById('mkt_name').value;
     var mkt_add = document.getElementById('mkt_add').value;
@@ -268,9 +271,8 @@ require("footer.php");
     var owner_lname = document.getElementById('owner_lname').value;
     var prof = document.getElementById('prof').value;
     var license = document.getElementById('license').value;
-      
-    let myRegex = /[^A-z ]/ig;// only alphabets( for name, last name and shop name
-    let addressRegex = /[!@#$%^&*+=/.>?{}<]/ig;// for address
+    let myRegex = /[^A-z ]/ig;
+    let addressRegex = /[!@#$%^&*+=/.>?{}<]/ig;
 
     var mkt_name_g = document.getElementById('mkt_name_g');
     var mkt_add_g = document.getElementById('mkt_add_g');
@@ -294,6 +296,8 @@ require("footer.php");
     var mkt_add_flag = true;
     var owner_name_flag = true;
     var owner_lname_flag = true;
+    alert(mkt_name_result);
+    alert(owner_name_result);
 
     if(mkt_name_result != null || mkt_name.length<5 || mkt_name.length > 40){
       mkt_name_flag = false;
@@ -304,8 +308,8 @@ require("footer.php");
       mkt_name_err.innerHTML = "";
       mkt_name_g.style.border = "none";
     }
-    
-    if(mkt_add_result != null || mkt_add.length<10 || mkt_add.length > 100){
+  
+    if(mkt_add_result != null || mkt_add.length<10 || mkt_add > 100){
       mkt_add_flag = false;
       mkt_add_err.innerHTML = "Invalid address!";
       mkt_add_g.style.border = "1px solid red";
@@ -314,9 +318,9 @@ require("footer.php");
       mkt_add_err.innerHTML = "";
       mkt_add_g.style.border = "none";
     }
+ 
     //Sayed Hagi mohammad kabir haidarabadi -->> the longest possible length for a name
-    if(owner_name_result != null || owner_name.length < 3 || owner_name.length > 40){
-      
+    if(owner_name_result != null ){
       owner_name_flag = false;
       owner_name_err.innerHTML = "Invalid name!";
       owner_name_g.style.border = "1px solid red";
@@ -339,32 +343,32 @@ require("footer.php");
     var pro_img_flag = true;
     var license_img_flag = true;
   
-    var slicePoint = prof.lastIndexOf('.')+1;
-    var proExt = prof.slice(slicePoint,prof.length);
-    if(proExt == "jpg" || proExt == "png" || proExt == "JFIF" || proExt == "jpeg" || proExt == "gif")  {
-      pro_img_flag = true;
-      pro_err.innerHTML="";
-      document.getElementById('prof').style.border = "none";
-    }else{
-      pro_img_flag = false;
-      document.getElementById('prof').style.border = "1px solid red";
-      pro_err.innerHTML = "Invalid File type";
+        var slicePoint = prof.lastIndexOf('.')+1;
+        var proExt = prof.slice(slicePoint,prof.length);
+        if(proExt == "jpg" || proExt == "png" || proExt == "JFIF" || proExt == "jpeg" || proExt == "gif")  {
+          pro_img_flag = true;
+          pro_err.innerHTML="";
+          document.getElementById('prof').style.border = "none";
+        }else{
+          pro_img_flag = false;
+          document.getElementById('prof').style.border = "1px solid red";
+          pro_err.innerHTML = "Invalid File type";
+        
+        }
 
-    }
-
-    var slicePoint = license.lastIndexOf('.')+1;
-    var licenseExt = license.slice(slicePoint,license.length);
-    if(licenseExt == "jpg" || licenseExt == "png" || licenseExt == "jpeg" || licenseExt == "gif")  {
-        license_img_flag = true;
-        license_err.innerHTML = "Invalid File type";
-        document.getElementById('license').style.border = "none";
-    }else{
-        license_img_flag = false;
-        license_err.innerHTML = "Invalid File type";
-        document.getElementById('license').style.border = "1px solid red";
-    }
+        var slicePoint = license.lastIndexOf('.')+1;
+        var licenseExt = license.slice(slicePoint,license.length);
+        if(licenseExt == "jpg" || licenseExt == "png" || licenseExt == "jpeg" || licenseExt == "gif")  {
+            license_img_flag = true;
+            license_err.innerHTML = "Invalid File type";
+            document.getElementById('license').style.border = "none";
+        }else{
+            license_img_flag = false;
+            license_err.innerHTML = "Invalid File type";
+            document.getElementById('license').style.border = "1px solid red";
+        }
     
-    // Return true if there is not invalid value otherwise false so that 'true' value allow form to be submitted but 'false' not
+
     return mkt_name_flag && mkt_add_flag && owner_name_flag && owner_lname_flag && pro_img_flag && license_img_flag;
     
   }
