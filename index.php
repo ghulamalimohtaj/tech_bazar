@@ -5,6 +5,7 @@
 <title>TechBazar</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<!-- Attach external files-->
 <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
 <link rel="stylesheet" href="layout/styles/w3.css">
 <link rel="stylesheet" href="layout/styles/font-awesome.min.css">
@@ -17,11 +18,10 @@
 <script src="js/myscript.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/popper.min.js"></script>
-<!--<link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
-<link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">-->
 </head>
+    <!-- content start-->
 <body>
-    
+    <!-- header start -->
 <div class="wrapper row0" style="overflow: hidden;height: 60px">
   <div id="topbar" class="hoc clear"> 
     <div class="fl_left">
@@ -36,96 +36,88 @@
         <li><span id="fire-sign-in"><a href="login.php" >Sign in</a></span></li>
         <li><span id="fire-sign-in"><a href="login.php"  data-toggle="modal" data-target="#signup" >Sign up</a></span></li>
       </ul>
-        
-        <div class="container">
-
-  <!-- The Modal -->
-   
-</div>
-
-        <div class="container mt-3">
+    
+<div class="container mt-3">
 <style>
 .form-group{
+    /* giving style to form inputs*/
   padding:0px 10px 0px 10px;
   border-radius:5px;
 }
 </style>
+    
+    <!-- sign up form modal start-->
   <div class="modal fade" id="signup">
     <div class="modal-dialog">
       <div class="modal-content" >
-      
-        
         <!-- Modal body -->
         <div class="modal-body" style="color:black">
         <div >
             <form method="post" action="signup.php" onsubmit="return validate()" enctype="multipart/form-data">
-                        <div class="form-group" id="mkt_name_g">
-                          <p id="mkt_name_err" class="error"></p>
-                          <label for="">Shop Name</label>
-                          <input type="text" name="mkt_name" class="form-control" id="mkt_name" placeholder="Enter your shop name" required>
-                        </div>
-                        <div class="form-group" id="mkt_add_g">
-                          <p id="mkt_add_err" class="error"></p>
-                          <label for="">Address</label>
-                          <input type="text" name="mkt_add" class="form-control" id="mkt_add" placeholder="Enter your addrss" required>
-                        </div>
-                        <div class="form-group" id="owner_name_g">
-                          <p id="owner_name_err" class="error"></p>
-                          <label for="">Name</label>
-                          <input type="text" name="owner_name" class="form-control" id="owner_name" placeholder="Enter your name" required>
-                        </div>
-                        <div class="form-group" id="owner_lname_g">
-                          <p id="owner_lname_err" class="error"></p>
-                          <label for="">Lastname</label>
-                          <input type="text" name="owner_lname" class="form-control"id="owner_lname" placeholder="Enter your lastname">
-                        </div>
-                        <div class="form-group">
-                          <label for="">Phone(<span style="text-transform:lowercase;">without +93 or 0</span>)</label>
-                          <input type="number" min="000000000" max="999999999" name="owner_phone" class="form-control" placeholder="Enter your phone number" required>
-                        </div>
-                        <div class="form-group">
-                          <label for="">email</label>
-                          <input type="email" name="owner_email" class="form-control" placeholder="Enter your email address" required>
-                        </div>
-                        
-                        <div class="form-group">
-                          <p id="pro_err" class="error"></p>
-                          <label for="">Photo</label>
-                          <input type="file" name="photo" id="prof" class="form-control">
-                        </div>
-                        <div class="form-group">
-                          <p id="license_err" class="error"></p>
-                          <label for="">License</label>
-                          <input type="file" name="license" id="license" class="form-control" required="">
-                        </div>
-                        <div class="form-group">
-                          <label for="">Password</label>
-                          <input type="password" name="owner_password" class="form-control" id="pass" placeholder="Enter your password" required>
-                          <p style="text-transform:lowercase;">password must be at least 7 characters long!</p>
-                        </div>
-                        <div class="form-group">
-                          <label for="">Confirm</label>
-                          <input type="password" name="confirm" onkeyup="decide()" class="form-control" id="repass" placeholder="Retype your password" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" name="sned" value="Register" class="btn btn-primary" id="submit">
-                        </div>
-                      
-                    </form>
+                <div class="form-group" id="mkt_name_g">
+                  <p id="mkt_name_err" class="error"></p>
+                  <label for="">Shop Name</label>
+                  <input type="text" name="mkt_name" class="form-control" id="mkt_name" placeholder="Enter your shop name" required>
                 </div>
+                <div class="form-group" id="mkt_add_g">
+                  <p id="mkt_add_err" class="error"></p>
+                  <label for="">Address</label>
+                  <input type="text" name="mkt_add" class="form-control" id="mkt_add" placeholder="Enter your addrss" required>
+                </div>
+                <div class="form-group" id="owner_name_g">
+                  <p id="owner_name_err" class="error"></p>
+                  <label for="">Name</label>
+                  <input type="text" name="owner_name" class="form-control" id="owner_name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group" id="owner_lname_g">
+                  <p id="owner_lname_err" class="error"></p>
+                  <label for="">Lastname</label>
+                  <input type="text" name="owner_lname" class="form-control"id="owner_lname" placeholder="Enter your lastname">
+                </div>
+                <div class="form-group">
+                  <label for="">Phone(<span style="text-transform:lowercase;">without +93 or 0</span>)</label>
+                  <input type="number" min="000000000" max="999999999" name="owner_phone" class="form-control" placeholder="Enter your phone number" required>
+                </div>
+                <div class="form-group">
+                  <label for="">email</label>
+                  <input type="email" name="owner_email" class="form-control" placeholder="Enter your email address" required>
+                </div>
+
+                <div class="form-group">
+                  <p id="pro_err" class="error"></p>
+                  <label for="">Photo</label>
+                  <input type="file" name="photo" id="prof" class="form-control">
+                </div>
+                <div class="form-group">
+                  <p id="license_err" class="error"></p>
+                  <label for="">License</label>
+                  <input type="file" name="license" id="license" class="form-control" required="">
+                </div>
+                <div class="form-group">
+                  <label for="">Password</label>
+                  <input type="password" name="owner_password" class="form-control" id="pass" placeholder="Enter your password" required>
+                  <p style="text-transform:lowercase;">password must be at least 7 characters long!</p>
+                </div>
+                <div class="form-group">
+                  <label for="">Confirm</label>
+                  <input type="password" name="confirm" onkeyup="decide()" class="form-control" id="repass" placeholder="Retype your password" required>
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="sned" value="Register" class="btn btn-primary" id="submit">
+                </div>
+            </form>
+            </div>
         </div>
       </div>
     </div>
-  </div>
-  
+  </div>  
 </div>
-      
-    </div>
-
-  </div>
+</div>
+</div>
 </div>
     
      <?php
+    // show message if registeration was successful or not
         if(isset($_GET['reg'])){
             if($_GET['reg'] == 'ok'){
             echo ("<script>alert('successfull submission! you will be approved within 24 hours!');</script>");  
@@ -147,9 +139,11 @@
         
   </header>
 </div>
+    <!-- background picture (show normally not when it is searched -->
 <div class="wrapper bgded overlay" style="<?php if(isset($_GET['q']))echo("display:none;");else{echo("display:block;");}?>background-image:url('images/demo/backgrounds/computer.jpg');">
   <div id="pageintro" class="hoc clear"> 
     <article>
+        <!-- OUR MAIN WORD -->
       <h1>Find a computer of your dream without wasting much time visiting every shops!</h1>
     </article>
   </div>
