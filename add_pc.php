@@ -19,7 +19,7 @@ if(isset($_POST['id'])){
             $storage = $_POST['storage'].$_POST['storage_unit'];
             $charge = $_POST['charge']."";
             $price = $_POST['price'].$_POST['price_unit'];
-            $size = $_POST['size'].;
+            $size = $_POST['size'];
             $i = 0;
             require('connection.php');
             $add_pc = "INSERT INTO computer VALUES(null,".$shop_id.",'".$model."','".$ram."','".$storage."',".$size.",'".$charge."','".$price."',NOW())";
