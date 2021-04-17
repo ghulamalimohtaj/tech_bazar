@@ -52,6 +52,7 @@
       <div class="modal-content" >
         <!-- Modal body -->
         <div class="modal-body" style="color:black">
+            <div>
             <form method="post" action="signup.php" onsubmit="return validate()" enctype="multipart/form-data">
                 <div class="form-group" id="mkt_name_g">
                   <p id="mkt_name_err" class="error"></p>
@@ -109,7 +110,11 @@
         </div>
       </div>
     </div>
-  </div>  
+  </div>
+  </div>
+</div>
+</div>
+</div>
     
      <?php
     // show message if registeration was successful or not
