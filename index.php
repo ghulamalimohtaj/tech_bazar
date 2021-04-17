@@ -110,7 +110,7 @@
                         <div class="form-group">
                             <input type="submit" name="sned" value="Register" class="btn btn-primary" id="submit">
                         </div>
-                        <p onclick="validate()">fire</p>
+                      
                     </form>
                 </div>
         </div>
@@ -318,7 +318,7 @@ require("footer.php");
       mkt_name_g.style.border = "none";
     }
     
-    if(mkt_add_result != null || mkt_add_result.length<10 || mkt_add_result > 100){
+    if(mkt_add_result != null || mkt_add.length<10 || mkt_add.length > 100){
       mkt_add_flag = false;
       mkt_add_err.innerHTML = "Invalid address!";
       mkt_add_g.style.border = "1px solid red";
